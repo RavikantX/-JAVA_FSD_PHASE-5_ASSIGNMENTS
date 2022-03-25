@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-03-17T13:41:43 IST" name="Suite" finished-at="2022-03-17T13:42:29 IST" duration-ms="45977">
+    <groups>
+    </groups>
+    <test started-at="2022-03-17T13:41:43 IST" name="Test" finished-at="2022-03-17T13:42:29 IST" duration-ms="45977">
+      <class name="com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:41:43 IST" name="beforeMethod" finished-at="2022-03-17T13:41:43 IST" duration-ms="16" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="launch()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:41:43 IST" name="launch" finished-at="2022-03-17T13:42:14 IST" duration-ms="31258" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launch -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:14 IST" name="afterMethod" finished-at="2022-03-17T13:42:14 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:14 IST" name="beforeMethod" finished-at="2022-03-17T13:42:14 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="facebook()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:14 IST" name="facebook" finished-at="2022-03-17T13:42:26 IST" depends-on-methods="com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest.launch" duration-ms="12094" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- facebook -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:26 IST" name="afterMethod" finished-at="2022-03-17T13:42:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:26 IST" name="beforeMethod" finished-at="2022-03-17T13:42:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="login()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:26 IST" name="login" finished-at="2022-03-17T13:42:29 IST" depends-on-methods="com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest.facebook" duration-ms="2491" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest@32eff876]" started-at="2022-03-17T13:42:29 IST" name="afterMethod" finished-at="2022-03-17T13:42:29 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.simplilearn.assertiontest.AssertionTestUsing_TestNG.AssertionTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
