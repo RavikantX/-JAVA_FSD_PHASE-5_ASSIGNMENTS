@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="2" failed="1" skipped="1">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-03-17T13:53:00 IST" name="Suite" finished-at="2022-03-17T13:53:46 IST" duration-ms="45477">
+    <groups>
+      <group name="Chrome">
+        <method signature="ParallelTest.launchFacebook()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" name="launchFacebook" class="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest"/>
+        <method signature="ParallelTest.login()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" name="login" class="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest"/>
+      </group> <!-- Chrome -->
+      <group name="Firefox">
+        <method signature="ParallelTest.launchFirefox()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" name="launchFirefox" class="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest"/>
+        <method signature="ParallelTest.loginWithFirefox()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" name="loginWithFirefox" class="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest"/>
+      </group> <!-- Firefox -->
+    </groups>
+    <test started-at="2022-03-17T13:53:00 IST" name="Test" finished-at="2022-03-17T13:53:46 IST" duration-ms="45477">
+      <class name="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest">
+        <test-method signature="launchFacebook()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" started-at="2022-03-17T13:53:01 IST" name="launchFacebook" finished-at="2022-03-17T13:53:44 IST" duration-ms="43546" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchFacebook -->
+        <test-method signature="login()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" started-at="2022-03-17T13:53:44 IST" name="login" finished-at="2022-03-17T13:53:46 IST" depends-on-methods="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.launchFacebook" duration-ms="1716" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="launchFirefox()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" started-at="2022-03-17T13:53:46 IST" name="launchFirefox" depends-on-groups="Chrome" finished-at="2022-03-17T13:53:46 IST" duration-ms="42" status="FAIL">
+          <exception class="org.openqa.selenium.WebDriverException">
+            <message>
+              <![CDATA[Cannot find firefox binary in PATH. Make sure firefox is installed. OS appears to be: WIN10
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'DESKTOP-Q75J1RK', ip: '192.168.170.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.2'
+Driver info: driver.version: FirefoxDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed. OS appears to be: WIN10
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'DESKTOP-Q75J1RK', ip: '192.168.170.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.2'
+Driver info: driver.version: FirefoxDriver
+at org.openqa.selenium.firefox.FirefoxBinary.<init>(FirefoxBinary.java:95)
+at java.base/java.util.Optional.orElseGet(Optional.java:364)
+at org.openqa.selenium.firefox.FirefoxOptions.getBinary(FirefoxOptions.java:189)
+at org.openqa.selenium.firefox.GeckoDriverService$Builder.withOptions(GeckoDriverService.java:179)
+at org.openqa.selenium.firefox.FirefoxDriver.toExecutor(FirefoxDriver.java:176)
+at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:125)
+at org.openqa.selenium.firefox.FirefoxDriver.<init>(FirefoxDriver.java:106)
+at com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.launchFirefox(ParallelTest.java:46)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:135)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:673)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:220)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:945)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:193)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:808)
+at org.testng.TestRunner.run(TestRunner.java:603)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:429)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)
+at org.testng.SuiteRunner.run(SuiteRunner.java:326)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+at org.testng.TestNG.runSuites(TestNG.java:1092)
+at org.testng.TestNG.run(TestNG.java:1060)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchFirefox -->
+        <test-method signature="loginWithFirefox()[pri:0, instance:com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]" started-at="2022-03-17T13:53:46 IST" name="loginWithFirefox" finished-at="2022-03-17T13:53:46 IST" depends-on-methods="com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.launchFirefox" duration-ms="1" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.loginWithFirefox() on instance com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b depends on not successfully finished methods 
+[com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.launchFirefox() on instance com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.loginWithFirefox() on instance com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b depends on not successfully finished methods 
+[com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest.launchFirefox() on instance com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest@384ad17b]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:149)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:808)
+at org.testng.TestRunner.run(TestRunner.java:603)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:429)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:423)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:383)
+at org.testng.SuiteRunner.run(SuiteRunner.java:326)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1249)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+at org.testng.TestNG.runSuites(TestNG.java:1092)
+at org.testng.TestNG.run(TestNG.java:1060)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithFirefox -->
+      </class> <!-- com.simplilearn.paralleltest.PrallelTest_UsingTestNG.ParallelTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
