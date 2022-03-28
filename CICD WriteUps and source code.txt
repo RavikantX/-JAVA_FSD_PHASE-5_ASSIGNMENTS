@@ -1,0 +1,318 @@
+             CI/CD DEPLOYMENT FOR SPRINGBOOT APPLICATION (FINAL PROJECT PHASE-5)
+**********************************************************************************************************
+*For this project i have create an EC2 Instance using our simplilearn LMS paltform.
+
+*Now My Instance is Ready so Now i need to get connected with that Instance So for that I have used MobaXterm app.
+
+*In MobaXterm App I have used SSH Client key to Get Connected with My Instance.
+
+* Now Moving Forward I have used The Below Instruction to Install Docker , Create Image using Docker , Pushed it to Docker Hub , Then installed Jenkins ,Build my app using Jenkins , Then again pushed that image to docker Hub....
+
+* So Below are the Steps which i have followed for this Project....
+
+-----------------------------------------------------------------------------------------------------------
+          For Instance Creation Follow these steps....
+
+Open AWS Console
+--------------------------
+click on services
+
+compute --> EC2 -->Ec2 Dashboard
+
+click on LauchInstances
+------------------------------------
+select AMI : Amazon AMI
+
+select instance type: t2.micro
+
+configureInstace details: keep as default
+just check the default values
+
+Storage: by default the size is 8GB, increase
+if required
+
+Tags: key value pair
+Add Tag --> Name = CICDInstance
+
+Security Group: give name and also change desc name
+like: CICDInstance
+
+Also click on Add Rule
+add Http
+in ssh --> click on dropdown and change it to myIP
+add Rule --> All TCP -> 0.0.0.0/0, ::/0 in custom
+
+Review and launch
+
+generate new Keypair --> use RAS algorithm
+download key 
+
+lauch instance
+after lauch click on instance and click on connect
+**************************************************************************************************************************
+
+***********Installing Docker ************
+
+create instance on AWS with ubuntu 20.01 OS
+
+once the instance started connect it with the help of MobaXterm
+-------------------------------------
+
+***************Docker installation on Ubuntu OS *********************
+
+> sudo apt-get update
+> sudo apt-get install ca-certificates curl gnupg lsb-release
+
+>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+> echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+***** Install Docker Engine ***************
+ > sudo apt-get update
+ > sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+********* let's check docker installed or not ****************
+
+> sudo docker -v or sudo docker --version
+> sudo docker info
+
+There is a docker hub which is a repository for docker image
+from there we can pull the images and use the same
+
+ex. let pull my sql image
+> sudo docker pull mysql
+> sudo docker images
+
+*** structure of docker conatiner *******
+> sudo ls (to check no of files available in folder)
+
+******** let's create our code image *************
+clone repository
+
+>git clone https://github.com/RavikantX/docker_master.git
+>cd docker_master
+
+>sudo ls (check list of files)
+
+>sudo docker build -t myimage .  (to build the image based on docker file available in the root)
+
+>sudo docker images (check the available images)
+
+>sudo docker run -d --name myconatainer -p 80:80 myimage (run image on conatainer named myconatainer) 
+
+>sudo docker ps -a (check the running containers)
+
+>curl localhost:80 (check html code which is running on port 80) 
+
+also you can see the running php file
+ your instance ip : 80 (http://3.83.213.128:80)
+
+------------------------------------------------------------------------
+How to push image on docker hub (Task 2)
+------------------------------------------------------------------------
+create account on https://hub.docker.com/
+
+once the account create go to your mobaxterm
+
+execute >docker login 
+
+Enter username and password (password not visible just enter, it will take it)
+
+if getting error of permission denied then execute below command
+
+> sudo chmod 666 /var/run/docker.sock
+
+next create tag for push image on hub
+
+(docker tag imageWhichYouPush <username>/anyNamewhichyouWanttoGiveForRepoImage)
+
+>docker tag myimage ravikantx/firstimage
+
+execute below command to push image
+
+>docker push ravikantx/firstimage
+-----------------------------------------------------------------------------------------------
+  3 And 4 Run Service In Docker Swarn and Scale it
+-----------------------------------------------------------------------------------------------
+****** run image on docker swarm *******
+
+swarm means managing multiple conatiners running
+on multiple hosts
+
+------------------------------------
+2 node : 1 node is manager and another node is worker
+
+>docker swarm init
+(it wil make my node as manager node and give one command, if you execute that command on another instaance --> that instance will connect to your manager node as worker.)
+
+once swarm initialized check the running node
+
+>docker node ls
+
+Let's run the service on docker swarm
+
+>docker service create -p 80:80 --name webserver myimage
+
+>docker service ls (check running service)
+
+>curl localhost:80
+
+****** Scale the container with Docker swarm ***********
+
+>docker service scale webserver=3
+
+(this will scale your service with 3 services running)
+
+to check service running
+
+>docker service ls
+
+to check howmany same services running
+
+>docker service ps webserver
+
+(you will be able to see 3 running services)
+---------------------------------------------------------------------------------------------------
+  
+*******Dockers With Jenkins********
+create instance on AWS with ubuntu 20.01 OS
+
+once the instance started connect it with the help of MobaXterm
+-------------------------------------
+Step 1:
+***************Docker installation on Ubuntu OS *********************
+Once Docker install then check its version and then execute the below commands..
+---------------------------------------------------------------------------------------------
+Step 2: Install JDK
+-----------------------------
+
+	>sudo apt-get update
+	>sudo apt install default-jdk -y
+
+Step 3: install maven
+-----------------------------
+
+	>sudo apt install maven -y
+
+Step 4: install jenkins
+------------------------------------
+
+> curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+	
+> echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+	
+> sudo apt-get update
+	
+> sudo apt-get install jenkins
+
+	*****start jenkins service*****
+	> sudo service jenkins start
+
+
+	*****to check jenkins service*****
+	> sudo service jenkins status
+	> ctrl + c
+	
+>sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+(copy the initialAdminPassword)
+
+open publicIp:8080
+
+enter password and install suggested Plugins
+
+---------------------------------------------------------------------------------------------
+set up login
+
+add username and password (remember) , add full name and email
+
+continue and you will be redirected to jenkins Dashboard
+
+------------------------------------------------------------------------------------------
+Step 5: install Docker plugin in jenkins
+
+	manage jenkins> manage plugins> available >docker > install without retstart
+
+Step 6: configure Docker cloud
+
+	manageJenkins> manage nodes and clouds> check lefthand side (configure cloud)>
+	>click on add a new cloud> select docker > click on cloud details
+	>Enter Host URI: unix:///var/run/docker.sock
+
+	test connection if getting error of access denied
+
+	go to you instance console and execute below command
+	>sudo chmod 777 /var/run/docker.sock
+
+	>refresh jenkins 
+	and test it again
+----------------------------------------------------------------------------
+step 7:
+
+	click on new Item
+	jenkinsdockerpipeline> freestyle project>ok
+	
+	click on configure
+	
+	In Source Code management add git repo URL
+        Give the branch name as main
+        Click on Poll SCM
+        Then in Description box write H/2 * * * *
+------------------------------------------------------------------------------------------
+
+  Scroll down  in build select add and publish docker
+
+>>In cloud select docker
+>>For adding docker credentials
+Click on add credentials >Jenkins
+Select Kind> username  and password 
+
+--Then Give dockerhub username and password
+--Then select your credentials in registry credentials which you have add.
+Save.
+
+>>Click on buid now
+>>It will build the image and push it on dockerhub
+
+>>If you make any changes in your github automatically it will build a new image.
+--------------------------------------------------------------------------------------------
+   
+**This Is How I have Build a image using Jenkins and pushed it on DockerHub.
+**Now I Have Checked my Docker Hub Account and there i can see my Image which i have built using Jenkins Pipeline...
+**I have Attached my DockerHub Link So that you can check it out https://hub.docker.com/
+**If you are not able to access my account then you can prefer the screenshots which i have attached with this project..
+
+-------------------------------------------------------------------------------------------------------------------------------
+                                  So above are the steps which we need to follow to build a CI/CD pipeline to demonstrate continuous deployment and host the application on AWS EC2 instance.
+
+*******************************************************************************************************************************
+                                            Thank You.............................
+**********************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
